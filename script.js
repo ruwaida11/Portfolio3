@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Fetch projects from db and dynamically load to page
-    
     loadProjects('loadProjects.php');
 
+    // ability to expand projects for more details
     const projectTilesContainer = document.querySelector('.project-tiles');
     projectTilesContainer.addEventListener('click', function(event) {
         const target = event.target;
@@ -14,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Search functionality
     document.querySelector('.search').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
             document.getElementById('search-projects').click();
@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loadProjects('loadProjects.php');
     });
     
+    // Logout/Login button
     if (document.cookie.indexOf('session_id=') >= 0) {
         document.getElementById('loginLink').innerHTML = "Logout";
         document.getElementById('loginLink').href = "http://localhost/Port3/logout.php"
@@ -75,12 +76,21 @@ function loadProjects(script) {
     .catch(error => console.error('Error fetching projects:', error));
 }
 
-function checkSession() {
-    // Check if session id exists
+function upload() {
     if (document.cookie.indexOf('session_id=') >= 0) {
         window.location.href = 'http://localhost/Port3/upload.php';
     } else {
         alert('Please login to upload a project.');
-        event.preventDefault();
+        preventDefault();
+    }
+}
+
+function showUsersProjects(){
+    if (document.cookie.indexOf('session_id=') >= 0) {
+        clearProjects();
+        loadProjects('searchWithUID.php');
+    } else {
+        alert('Please login to view your projects.');
+        preventDefault();
     }
 }

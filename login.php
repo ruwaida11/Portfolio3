@@ -1,4 +1,5 @@
 <?php
+	$error_message = "";
 	if (isset($_POST['submitted'])){
 		if ( !isset($_POST['username'], $_POST['password']) ) {
 		 exit('Please fill both the username and password fields!');
@@ -27,13 +28,13 @@
 						header("Location:index.html");
 						exit();
 					} else {
-					echo "<p style='color:red'>Error logging in, password does not match </p>";
+						$error_message = "<p style='color:red'>Error logging in, password does not match </p>";
 					}
 				} else {
-					echo "<p style='color:red'>Error logging in, user does not exist </p>";
+					$error_message = "<p style='color:red'>Error logging in, user does not exist </p>";
 				}
 		    } else {
-			  echo "<p style='color:red'>Error logging in, Username not found </p>";
+			  $error_message = "<p style='color:red'>Error logging in, Username not found </p>";
 		    }
 		}
 		catch(PDOException $ex) {
@@ -65,6 +66,7 @@
         <input type="password" name="password" id="password" maxlength="25" required>
         <input type="submit" value="Login">
         <input type="hidden" name="submitted" value="TRUE">
+		<div style="color: red;"><?php echo $error_message; ?></div>
         <p>Not registered yet? <a href="register.php">Register</a></p>
     </form>
 <footer>

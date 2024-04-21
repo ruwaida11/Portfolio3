@@ -85,6 +85,11 @@ button:hover {
     background-color: #538b9e; /* Change to the desired hover background color */
 }
 
+#my-projects {
+    width:100px;
+    margin: 0;
+}
+
 .project-tiles {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

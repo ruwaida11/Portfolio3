@@ -1,5 +1,6 @@
 <?php
 $error_message = '';
+$success_message = '';
 $username = '';
 $email = '';
 
@@ -14,14 +15,20 @@ if (isset($_POST['submitted'])) {
     $password2 = isset($_POST['password2']) ? $_POST['password2'] : '';
     $email = isset($_POST['email']) ? $_POST['email'] : '';
 
+    $stat = $db->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
+    $stat->execute([$username]);
+    $count = $stat->fetchColumn();
+
     // Check if username, password, and email are provided
     if (!$username || !$password1 || !$password2 || !$email) {
         $error_message = "Username, password, or email is missing!";
     }
-    
-    // check password1==password2. if not err. if yes continue
     elseif ($password1 !== $password2) {
         $error_message = "Passwords do not match!";
+    } elseif (strlen(trim($username)) == 0) {
+        $error_message = "Username must be madeup of letters and/or numbers";
+    } elseif ($count > 0) {
+        $error_message = "Username already taken";
     } else {
         // hashing the pass after making sure pass1 and 2 match 
         $password = password_hash($password1, PASSWORD_DEFAULT);
@@ -31,7 +38,7 @@ if (isset($_POST['submitted'])) {
             $stat->execute(array($username, $password, $email));
 
             $id = $db->lastInsertId();
-            echo "Congratulations! You are now registered. Your ID is: $id";
+            $success_message = "Congratulations! You are now registered.<br/>";
         } catch (PDOException $ex) {
             echo "Sorry, a database error occurred! <br>";
             echo "Error details: <em>" . $ex->getMessage() . "</em>";
@@ -54,6 +61,7 @@ if (isset($_POST['submitted'])) {
         </div>
     </header>
     <form action="register.php" method="post" class="loginform">
+        
         <label for="username">User Name</label>
         <input type="text" name="username" id="username" maxlength="25" required value="<?php echo htmlspecialchars($username); ?>">
         <label for="password1">Password</label>
@@ -65,7 +73,10 @@ if (isset($_POST['submitted'])) {
         <input type="submit" value="Register">
         <input type="hidden" name="submitted" value="TRUE">
         <?php if ($error_message): ?>
-        <div style="color: red;"><?php echo $error_message; ?></div>
+            <div style="color: red;"><?php echo $error_message; ?></div>
+        <?php endif; ?>
+        <?php if ($success_message): ?>
+            <div style="color: green;"><?php echo $success_message; ?></div>
         <?php endif; ?>
         <p>Already a user? <a href="login.php">Login</a></p>
     </form>

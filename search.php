@@ -21,26 +21,25 @@ if (isset($_GET['search'], $_GET['date'])) {
     }
 
     // Prepare the SQL statement with placeholders
-    $sql = "SELECT * FROM projects LEFT JOIN users ON users.uid=projects.uid $whereClause";
-    $stmt = $db->prepare($sql);
+    $stat = $db->prepare("SELECT * FROM projects LEFT JOIN users ON users.uid=projects.uid $whereClause");
 
     $index = 1; // Parameter index for binding
 
     // Bind search term if not empty
     if (!empty($searchTerm)) {
-        $stmt->bindParam($index++, $searchTerm);
+        $stat->bindParam($index++, $searchTerm);
     }
 
     // Bind date filter if not empty
     if (!empty($_GET['date'])) {
-        $stmt->bindParam($index++, $_GET['date']);
+        $stat->bindParam($index++, $_GET['date']);
     }
 
     // Execute the query
-    $stmt->execute();
+    $stat->execute();
 
     // Fetch the results
-    $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $projects = $stat->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode($projects);
 }

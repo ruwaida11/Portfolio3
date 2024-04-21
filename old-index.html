@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AProject - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    nav {
+      background-color: #666;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .project-card {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .project-card h3 {
+      color: #333;
+    }
+    .project-card p {
+      color: #666;
+    }
+    /* Initially hide project details */
+    .project-details {
+      display: none;
+    }
+
+    /* Style for project title */
+    .project-card h3 {
+      cursor: pointer; /* Change cursor to pointer on hover */
+    }
+
+    /* Optional: Style for project details when visible */
+    .project-details.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AProject</h1>
+  </header>
+  <nav>
+    <li><a href="http://localhost/Port3/projects.php">View All Projects</a></li>
+    <li><a href="http://localhost/Port3/search.php">Search Projects</a></li>
+    <li><a href="http://localhost/Port3/register.php">Register</a></li>
+    <li><a href="http://localhost/Port3/login.php">Login</a></li>
+  </nav>
+  <section>
+    <div class="container">
+      <h2>All Projects</h2>
+      <div class="project-card" id="project1">
+        <h3 onclick="toggleDetails('project1')">StarMan</h3>
+        <p>Start date: 10-11-2023</p>
+        <p>A story mode game following StarMan's journey.</p>
+        <div class="project-details">
+          <p>End Date: 20-03-2024</p>
+          <p>Phase: Deployment</p>
+          <p>Owner: James Black</p>
+        </div>
+      </div>
+      <div class="project-card" id="project2">
+        <h3 onclick="toggleDetails('project2')">To Do List</h3>
+        <p>Start date: 14-01-2024</p>
+        <p>A virtual to do list for people to use.</p>
+        <div class="project-details">
+          <p>End Date: 17-02-2024</p>
+          <p>Phase: Complete</p>
+          <p>Owner: Zoe Storm</p>
+        </div>
+      </div>
+      <div class="project-card" id="project3">
+        <h3 onclick="toggleDetails('project3')">Hangman v2</h3>
+        <p>Start date: 25-02-2024</p>
+        <p>Online hangman game that people can play online with others.</p>
+        <div class="project-details">
+          <p>End Date: 17-02-2024</p>
+          <p>Phase: Testing</p>
+          <p>Owner: Jim Halpert</p>
+        </div>
+      </div>
+      <div class="project-card" id="project4">
+        <h3 onclick="toggleDetails('project4')">Hangman v2</h3>
+        <p>Start date: 25-02-2024</p>
+        <p>Online hangman game that people can play online with others.</p>
+        <div class="project-details">
+          <p>End Date: 17-02-2024</p>
+          <p>Phase: Testing</p>
+          <p>Owner: Jim Halpert</p>
+        </div>
+      </div>
+      <!-- Add more project cards here -->
+    </div>
+  </section>
+  
+  <script>
+    function toggleDetails(projectId) {
+      var details = document.getElementById(projectId).getElementsByClassName('project-details')[0];
+      details.style.display = (details.style.display === 'none') ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>  

@@ -81,7 +81,6 @@ function upload() {
         window.location.href = 'http://localhost/Port3/upload.php';
     } else {
         alert('Please login to upload a project.');
-        preventDefault();
     }
 }
 
@@ -91,6 +90,5 @@ function showUsersProjects(){
         loadProjects('searchWithUID.php');
     } else {
         alert('Please login to view your projects.');
-        preventDefault();
     }
 }

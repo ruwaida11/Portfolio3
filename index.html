@@ -15,8 +15,9 @@
                 <input name="search" class="search" type="text" placeholder="Search for a project">
                 <input type="date" name="search-startDate" id="search-startDate" required>
                 <button type="submit" id="search-projects">Search</button>
-                <button onclick="showUsersProjects()" id="search-projects">My Projects</button>
                 <button type="submit" id="clear-search">Clear</button>
+                <button onclick="showUsersProjects()" id="search-projects">My Projects</button>
+                
             </div>
             <a href="http://localhost/Port3/login.php" class="login" id="loginLink">Login</a>
         </div>
@@ -24,7 +25,7 @@
     
     <div class="container">
         <div class="project-tiles">
-            <a href="http://localhost/Port3/upload.php" onclick="upload()" class="project-tile plus-tile">➕</a>
+            <a onclick="upload()" class="project-tile plus-tile">➕</a>
         </div>
     </div>
 

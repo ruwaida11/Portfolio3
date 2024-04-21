@@ -54,7 +54,14 @@
 		<div class="container">
 			<h1><a href="http://localhost/Port3/index.html">AProject</a></h1>
 			<h2>Upload Project</h2>
-			<a href="http://localhost/Port3/login.php" class="login">Login</a>
+			<?php
+			// Check if session id exists
+			if (isset($_COOKIE['session_id'])) {
+				echo '<a href="logout.php" class="login">Logout</a>';
+			} else {
+				echo '<a href="http://localhost/Port3/login.php" class="login">Login</a>';
+			}
+			?>
 		</div>
 	</header>
 	<form action="upload.php" method="post" id="upload" class="loginform">

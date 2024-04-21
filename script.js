@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("search-startDate").value = '';
         loadProjects('loadProjects.php');
     });
+    
+    if (document.cookie.indexOf('session_id=') >= 0) {
+        document.getElementById('loginLink').innerHTML = "Logout";
+        document.getElementById('loginLink').href = "http://localhost/Port3/logout.php"
+    } else {
+        document.getElementById('loginLink').innerHTML = "Login";
+    }
 });
 
 function clearProjects(){
@@ -66,4 +73,14 @@ function loadProjects(script) {
         });
     })
     .catch(error => console.error('Error fetching projects:', error));
+}
+
+function checkSession() {
+    // Check if session id exists
+    if (document.cookie.indexOf('session_id=') >= 0) {
+        window.location.href = 'http://localhost/Port3/upload.php';
+    } else {
+        alert('Please login to upload a project.');
+        event.preventDefault();
+    }
 }

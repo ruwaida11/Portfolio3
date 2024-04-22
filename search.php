@@ -59,7 +59,16 @@ if (isset($_GET['search'], $_GET['date'])) {
 
         // Add edit button if session id exists and the project belongs to the user
         if ($uid != null && $project['uid'] == $uid) {
-            $projectTile['edit_button'] = '<button class="edit-button" onclick="editProject()">E</button>';
+            $projectTile['edit_button'] = 
+                "<form action=\"editProject.php\"> 
+                    <input type=\"hidden\" name=\"pid\" value=\"" . htmlspecialchars($project['pid']) . "\" />
+                    <input type=\"hidden\" name=\"project_title\" value=\"" . htmlspecialchars($project['title']) . "\" />
+                    <input type=\"hidden\" name=\"project_start_date\" value=\"" . htmlspecialchars($project['start_date']) . "\" />
+                    <input type=\"hidden\" name=\"project_description\" value=\"" . htmlspecialchars($project['description']) . "\" />
+                    <input type=\"hidden\" name=\"project_end_date\" value=\"" . htmlspecialchars($project['end_date']) . "\" />
+                    <input type=\"hidden\" name=\"project_phase\" value=\"" . htmlspecialchars($project['phase']) . "\" />
+                    <input class=\"edit-button\" type=\"submit\" value=\"&#9998;\" /> 
+                </form>";
         }
 
         $projectTiles[] = $projectTile;

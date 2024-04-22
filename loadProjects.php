@@ -30,7 +30,16 @@ foreach ($projects as $project) {
     ];
 
     if ($uid != null && $project['uid'] == $uid) {
-        $projectTile['edit_button'] = "<form action=\"editProject.php\"> <input type=\"hidden\" name=\"project_name\" value=\"12345\" /> <input class=\"edit-button\" type=\"submit\" value=\"&#9998;\" /> </form>";
+        $projectTile['edit_button'] = 
+            "<form action=\"editProject.php\"> 
+                <input type=\"hidden\" name=\"pid\" value=\"" . htmlspecialchars($project['pid']) . "\" />
+                <input type=\"hidden\" name=\"project_title\" value=\"" . htmlspecialchars($project['title']) . "\" />
+                <input type=\"hidden\" name=\"project_start_date\" value=\"" . htmlspecialchars($project['start_date']) . "\" />
+                <input type=\"hidden\" name=\"project_description\" value=\"" . htmlspecialchars($project['description']) . "\" />
+                <input type=\"hidden\" name=\"project_end_date\" value=\"" . htmlspecialchars($project['end_date']) . "\" />
+                <input type=\"hidden\" name=\"project_phase\" value=\"" . htmlspecialchars($project['phase']) . "\" />
+                <input class=\"edit-button\" type=\"submit\" value=\"&#9998;\" /> 
+            </form>";
     }
 
     $projectTiles[] = $projectTile;

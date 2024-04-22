@@ -52,7 +52,7 @@ function clearProjects(){
     }
 }
 
-function loadProjects(script) {
+function loadProjects(script) { 
     fetch(script)
     .then(response => response.json())
     .then(data => {
@@ -62,14 +62,18 @@ function loadProjects(script) {
             projectTile.classList.add('project-tile');
             projectTile.setAttribute('data-project', project.title);
             projectTile.innerHTML = `
-                <h2>${project.title}</h2>
-                <p><strong>Start Date:</strong> ${project.start_date}</p>
-                <p><strong>Description:</strong> ${project.description}</p>
-                <div class="project-details" style="display: none;">
-                    <p><strong>End Date:</strong> ${project.end_date}</p>
-                    <p><strong>Email:</strong> ${project.email}</p>
-                </div>
-            `;
+                <div class="project-content">
+                    <div class="project-tile-title">
+                        <h2>${project.title}</h2>
+                        <div class="edit-button">${project.edit_button}</div>
+                    </div>
+                    <p><strong>Start Date:</strong> ${project.start_date}</p>
+                    <p><strong>Description:</strong> ${project.description}</p>
+                    <div class="project-details" style="display: none;">
+                        <p><strong>End Date:</strong> ${project.end_date}</p>
+                        <p><strong>Email:</strong> ${project.email}</p>
+                    </div>
+                </div>`;
             projectTiles.appendChild(projectTile);
         });
     })

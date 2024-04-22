@@ -121,6 +121,22 @@ button:hover {
     margin-bottom: 0;
 }
 
+.project-tile-title{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:5px;
+}
+
+.project-tile-title button {
+    width:auto;
+}
+
+.edit-button {
+    display: inline-block;
+    transform: rotateZ(45deg);
+}
+
 footer {
     background-color: #7e8a97;
     color: #fff;

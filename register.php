@@ -4,12 +4,9 @@ $success_message = '';
 $username = '';
 $email = '';
 
-// If the form has been submitted
 if (isset($_POST['submitted'])) {
-    // Connect to the database
     require_once('connectdatab.php');
 
-    // Retrieve form inputs
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $password1 = isset($_POST['password1']) ? $_POST['password1'] : '';
     $password2 = isset($_POST['password2']) ? $_POST['password2'] : '';
@@ -33,7 +30,6 @@ if (isset($_POST['submitted'])) {
         // hashing the pass after making sure pass1 and 2 match 
         $password = password_hash($password1, PASSWORD_DEFAULT);
         try {
-            // Register user by inserting the user info into the users table
             $stat = $db->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
             $stat->execute(array($username, $password, $email));
 
@@ -46,6 +42,7 @@ if (isset($_POST['submitted'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

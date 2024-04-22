@@ -18,11 +18,9 @@ if (isset($_POST['submitted'])){
 		$stat->execute([$projectName, $uid]);
 		$count = $stat->fetchColumn();
 		
-		// fetch the result row and check 
 		if ($count > 0) {
 			echo "<p style='color:red'>A project with the same name already exists! </p>";
 		} else {
-			// Insert the project into db
 			$stat = $db->prepare("INSERT INTO projects (title, start_date, end_date, phase, description, uid) VALUES (?, ?, ?, ?, ?, ?)");
 			$stat->execute([$projectName, $_POST['startDate'], $_POST['endDate'], $_POST['phase'], $_POST['description'], $uid]);
 
@@ -40,14 +38,14 @@ if (isset($_POST['submitted'])){
 
 <html>
 <head>
-	<title>Upload Project</title>
+	<title>Edit Project</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<header>
 		<div class="container">
 			<h1><a href="http://localhost/Port3/index.html">AProject</a></h1>
-			<h2>Upload Project</h2>
+			<h2>Edit Project</h2>
 			<a href="logout.php" class="login">Logout</a>
 		</div>
 	</header>
@@ -68,7 +66,8 @@ if (isset($_POST['submitted'])){
 		</select>
 		<label for="description">Description:</label>
 		<textarea name="description" id="description" maxlength="250" required rows="4"></textarea>
-        <input type="submit" value="Upload">
+        <input type="submit" value="Save Changes">
+		<input type="submit" value="Delete" style="background-color: #dc3545;">
         <input type="hidden" name="submitted" value="TRUE">
     </form>
 <footer>

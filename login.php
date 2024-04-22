@@ -4,10 +4,8 @@
 		if ( !isset($_POST['username'], $_POST['password']) ) {
 		 exit('Please fill both the username and password fields!');
 	    }
-		// connect to db
 		require_once ("connectdatab.php");
 		try {
-			// query db
 			$stat = $db->prepare('SELECT uid, password FROM users WHERE username = ?');
 			$stat->execute(array($_POST['username']));
 		    

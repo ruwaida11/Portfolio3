@@ -60,11 +60,11 @@ if (isset($_POST['submitted'])){
         <input type="date" name="endDate" id="endDate" required>
 		<label for="phase">Phase</label>
 		<select id="phase" name="phase" class="select-style">
-			<option value="design">Design</option>
-			<option value="development">Development</option>
-			<option value="testing">Testing</option>
-			<option value="deployment">Deployment</option>
-			<option value="complete">Complete</option>
+			<option value="Design">Design</option>
+			<option value="Development">Development</option>
+			<option value="Testing">Testing</option>
+			<option value="Deployment">Deployment</option>
+			<option value="Complete">Complete</option>
 		</select>
 		<label for="description">Description:</label>
 		<textarea name="description" id="description" maxlength="250" required rows="4"></textarea>

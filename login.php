@@ -9,7 +9,6 @@
 			$stat = $db->prepare('SELECT uid, password FROM users WHERE username = ?');
 			$stat->execute(array($_POST['username']));
 		    
-			// check user exists
 			if ($stat->rowCount()>0){
 				$row=$stat->fetch();
 				if($row){
@@ -20,7 +19,7 @@
 						$session_id = bin2hex(random_bytes(32));
 						setcookie('session_id', $session_id, time() + (3600 * 5), '/');
 
-						// INSERT session_id into db and map to logged in users uid
+
 						$stat = $db->prepare("INSERT INTO user_sessions (session_id, uid, created_at) VALUES (?, ?, NOW())");
 						$stat->execute([$session_id, $uid]);
 						header("Location:index.html");

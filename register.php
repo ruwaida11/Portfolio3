@@ -16,7 +16,6 @@ if (isset($_POST['submitted'])) {
     $stat->execute([$username]);
     $count = $stat->fetchColumn();
 
-    // Check if username, password, and email are provided
     if (!$username || !$password1 || !$password2 || !$email) {
         $error_message = "Username, password, or email is missing!";
     }

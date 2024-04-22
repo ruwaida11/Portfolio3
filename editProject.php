@@ -8,7 +8,7 @@ if (isset($_POST['submitted'])){
 
     require_once ("connectdatab.php");
     try {
-        // fetch uid using session cookie
+        
         $session_id = $_COOKIE['session_id'];
         $stat = $db->prepare('SELECT uid FROM user_sessions WHERE session_id = ?');
         $stat->execute([$session_id]);
@@ -68,7 +68,6 @@ if (isset($_POST['submitted'])){
 		<label for="description">Description:</label>
 		<textarea name="description" id="description" maxlength="250" required rows="4"><?php echo htmlspecialchars($_GET['project_description']); ?></textarea>
         <input type="submit" value="Save Changes">
-		<!-- <input type="submit" value="Delete" style="background-color: #dc3545;"> -->
         <input type="hidden" name="submitted" value="TRUE">
     </form>
 <footer>

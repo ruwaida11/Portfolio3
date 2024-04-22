@@ -1,6 +1,6 @@
 <?php
 require_once("connectdatab.php");
-// fetch uid using session cookie
+// get uid using session cookie
 $session_id = $_COOKIE['session_id'];
 $stat = $db->prepare('SELECT uid FROM user_sessions WHERE session_id = ?');
 $stat->execute([$session_id]);

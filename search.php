@@ -21,12 +21,10 @@ if (isset($_GET['search'], $_GET['date'])) {
 
     $stat = $db->prepare("SELECT * FROM projects LEFT JOIN users ON users.uid=projects.uid $whereClause");
 
-    $index = 1; // Parameter index for binding
-    // Bind search term if not empty
+    $index = 1; 
     if (!empty($searchTerm)) {
         $stat->bindParam($index++, $searchTerm);
     }
-    // Bind date filter if not empty
     if (!empty($_GET['date'])) {
         $stat->bindParam($index++, $_GET['date']);
     }
@@ -55,10 +53,9 @@ if (isset($_GET['search'], $_GET['date'])) {
             'end_date' => $project['end_date'],
             'email' => $project['email'],
             'phase' => $project['phase'],
-            'edit_button' => '' // Initialize edit_button
+            'edit_button' => '' 
         ];
 
-        // Add edit button if session id exists and the project belongs to the user
         if ($uid != null && $project['uid'] == $uid) {
             $projectTile['edit_button'] = 
                 "<form action=\"editProject.php\"> 

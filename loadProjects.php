@@ -1,7 +1,7 @@
 <?php
 require_once("connectdatab.php");
 
-// Fetch the session id
+// get the session id
 $session_id = isset($_COOKIE['session_id']) ? $_COOKIE['session_id'] : null;
 
 // Check if session id exists
@@ -13,7 +13,7 @@ if (!empty($session_id)) {
     $uid = $row['uid'];
 }
 
-// Fetch projects
+// get projects
 $stat = $db->prepare("SELECT * FROM projects LEFT JOIN users ON users.uid=projects.uid");
 $stat->execute();
 $projects = $stat->fetchAll(PDO::FETCH_ASSOC);

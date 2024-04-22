@@ -6,7 +6,7 @@ if (isset($_POST['submitted'])){
 	$projectName = trim($_POST['projectName']);
 	require_once ("connectdatab.php");
 	try {
-		// fetch uid using session cookie
+		// get uid using session cookie
 		$session_id = $_COOKIE['session_id'];
 		$stat = $db->prepare('SELECT uid FROM user_sessions WHERE session_id = ?');
 		$stat->execute([$session_id]);
@@ -18,7 +18,6 @@ if (isset($_POST['submitted'])){
 		$stat->execute([$projectName, $uid]);
 		$count = $stat->fetchColumn();
 		
-		// fetch the result row and check 
 		if ($count > 0) {
 			echo "<p style='color:red'>A project with the same name already exists! </p>";
 		} else {

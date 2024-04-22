@@ -70,6 +70,7 @@ function loadProjects(script) {
                     <p><strong>Start Date:</strong> ${project.start_date}</p>
                     <p><strong>Description:</strong> ${project.description}</p>
                     <div class="project-details" style="display: none;">
+                        <p><strong>Phase:</strong> ${project.phase}</p>
                         <p><strong>End Date:</strong> ${project.end_date}</p>
                         <p><strong>Email:</strong> ${project.email}</p>
                     </div>

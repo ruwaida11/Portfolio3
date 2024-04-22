@@ -20,6 +20,7 @@ foreach ($projects as $project) {
         'description' => $project['description'],
         'end_date' => $project['end_date'],
         'email' => $project['email'],
+        'phase' => $project['phase'],
         'edit_button' => "<form action=\"editProject.php\"> 
                             <input type=\"hidden\" name=\"pid\" value=\"" . htmlspecialchars($project['pid']) . "\" />
                             <input type=\"hidden\" name=\"project_title\" value=\"" . htmlspecialchars($project['title']) . "\" />

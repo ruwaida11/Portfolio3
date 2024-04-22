@@ -54,6 +54,7 @@ if (isset($_GET['search'], $_GET['date'])) {
             'description' => $project['description'],
             'end_date' => $project['end_date'],
             'email' => $project['email'],
+            'phase' => $project['phase'],
             'edit_button' => '' // Initialize edit_button
         ];
 

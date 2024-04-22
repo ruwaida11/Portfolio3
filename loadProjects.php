@@ -26,6 +26,7 @@ foreach ($projects as $project) {
         'description' => $project['description'],
         'end_date' => $project['end_date'],
         'email' => $project['email'],
+        'phase' => $project['phase'],
         'edit_button' => ''
     ];
 

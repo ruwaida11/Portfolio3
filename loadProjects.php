@@ -30,7 +30,7 @@ foreach ($projects as $project) {
     ];
 
     if ($uid != null && $project['uid'] == $uid) {
-        $projectTile['edit_button'] = '<button class="edit-button" href="/editProject.php">&#9998;</button>';
+        $projectTile['edit_button'] = "<form action=\"editProject.php\"> <input type=\"hidden\" name=\"project_name\" value=\"12345\" /> <input class=\"edit-button\" type=\"submit\" value=\"&#9998;\" /> </form>";
     }
 
     $projectTiles[] = $projectTile;

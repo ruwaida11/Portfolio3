@@ -134,7 +134,7 @@ button:hover {
 
 .edit-button {
     display: inline-block;
-    transform: rotateZ(45deg);
+    transform: rotateZ(90deg);
 }
 
 footer {

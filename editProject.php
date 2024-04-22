@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST['submitted'])){
 	if ( !isset($_POST['projectName'], $_POST['startDate'], $_POST['endDate'], $_POST['description']) ) {
 		exit('Please fill out all fields in the form!');
@@ -51,8 +52,8 @@ if (isset($_POST['submitted'])){
 	</header>
 	<form action="upload.php" method="post" id="upload" class="loginform">
         <label for="projectName">Project Name</label>
-        <input type="text" name="projectName" id="projectName" maxlength="25" required>
-        <label for="startDate">Start Date:</label>
+		<input type="text" name="projectName" id="projectName" maxlength="25" required value="<?php echo htmlspecialchars($_GET['project_name']) ; ?>">
+		<label for="startDate">Start Date:</label>
         <input type="date" name="startDate" id="startDate" required>
 		<label for="endDate">End Date:</label>
         <input type="date" name="endDate" id="endDate" required>

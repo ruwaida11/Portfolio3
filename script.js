@@ -65,7 +65,7 @@ function loadProjects(script) {
                 <div class="project-content">
                     <div class="project-tile-title">
                         <h2>${project.title}</h2>
-                        <div class="edit-button">${project.edit_button}</div>
+                        ${project.edit_button}
                     </div>
                     <p><strong>Start Date:</strong> ${project.start_date}</p>
                     <p><strong>Description:</strong> ${project.description}</p>

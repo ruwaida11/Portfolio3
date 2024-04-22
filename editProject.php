@@ -24,7 +24,7 @@ if (isset($_POST['submitted'])){
         } else {
             $stat = $db->prepare("UPDATE projects SET title=?, start_date=?, end_date=?, phase=?, description=? WHERE pid=? AND uid=?");
             $stat->execute([$projectName, $_POST['startDate'], $_POST['endDate'], $_POST['phase'], $_POST['description'], $pid, $uid]);
-
+            header("Location:index.html");
             echo "<p style='color:red'>Project Updated Successfully</p>";
         } 
     }
